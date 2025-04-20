@@ -2,116 +2,108 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>🚨 ULTRA-CLASSIFIED LEAK: ElTremendo</title>
+  <title>⚠️ 𝗖𝗥𝗜𝗧𝗔𝗟 𝗛𝗔𝗖𝗞: 𝗘𝗹𝗧𝗿𝗲𝗺𝗲𝗻𝗱𝗼 𝗗𝗔𝗧𝗔𝗟𝗘𝗔𝗞</title>
   <style>
+    /* ESTILOS DEL INFIERNO DIGITAL */
+    @font-face {
+      font-family: 'Hacker';
+      src: url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+    }
+
     body {
-      background: radial-gradient(ellipse at center, #0d0d0d 0%, #000000 100%);
-      font-family: 'Courier New', monospace;
-      color: #00ffcc;
-      padding: 2rem;
-      overflow-x: hidden;
-      animation: pulseBg 10s infinite alternate;
+      background-color: #000;
+      margin: 0;
+      padding: 0;
+      font-family: 'Hacker', monospace;
+      color: #ff0000;
+      cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><circle cx='8' cy='8' r='7' fill='red'/><circle cx='8' cy='8' r='3' fill='black'/></svg>"), auto;
+      overflow-y: scroll;
+      height: 500vh; /* Scroll infinito */
     }
 
-    @keyframes pulseBg {
-      from { background-color: #000000; }
-      to { background-color: #1a1a1a; }
+    #screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.3;
+      background: 
+        repeating-linear-gradient(0deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.1) 1px, transparent 1px, transparent 2px),
+        repeating-linear-gradient(90deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.1) 1px, transparent 1px, transparent 2px);
+      animation: scanlines 0.5s infinite;
     }
 
-    h1, h2 {
-      color: #ff0066;
-      text-shadow: 0 0 15px #ff0066, 0 0 5px #ff99cc;
+    @keyframes scanlines {
+      from { background-position: 0 0; }
+      to { background-position: 0 10px; }
     }
 
     .container {
       max-width: 900px;
-      margin: auto;
-      border: 3px double #00ffcc;
+      margin: 2rem auto;
       padding: 2rem;
-      background: linear-gradient(to bottom, #1a1a1a, #000);
-      border-radius: 16px;
-      box-shadow: 0 0 25px #00ffcc99;
+      border: 3px solid #ff0000;
+      box-shadow: 0 0 30px #ff0000;
+      position: relative;
+      background: rgba(0, 0, 0, 0.8);
+      animation: glitch-border 5s infinite;
     }
 
-    label {
-      display: block;
-      margin-top: 1rem;
+    @keyframes glitch-border {
+      0% { border-color: #ff0000; }
+      25% { border-color: #00ff00; }
+      50% { border-color: #0000ff; }
+      75% { border-color: #ffff00; }
+      100% { border-color: #ff00ff; }
+    }
+
+    h1 {
+      font-size: 3rem;
+      text-align: center;
+      color: #ff0000;
+      text-shadow: 0 0 10px #ff0000;
+      margin-bottom: 1rem;
+      animation: text-glitch 2s infinite;
+    }
+
+    @keyframes text-glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-5px, 5px); color: #00ff00; }
+      40% { transform: translate(5px, -5px); color: #0000ff; }
+      60% { transform: translate(-5px, -5px); color: #ffff00; }
+      80% { transform: translate(5px, 5px); color: #ff00ff; }
+      100% { transform: translate(0); color: #ff0000; }
+    }
+
+    .terminal {
+      background: #000;
+      border: 1px solid #ff0000;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      min-height: 150px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .terminal::before {
+      content: ">";
+      position: absolute;
+      left: 10px;
+      color: #ff0000;
       font-weight: bold;
-      text-transform: uppercase;
-      color: #ff0066;
     }
 
-    input, textarea {
-      width: 100%;
-      background-color: #000;
-      color: #00ffcc;
-      border: 1px solid #00ffcc;
-      padding: 0.6rem;
-      margin-top: 0.3rem;
-      font-family: 'Courier New', monospace;
-    }
-
-    textarea {
-      resize: vertical;
-      height: 100px;
-    }
-
-    .note {
-      margin-top: 2rem;
-      color: #888;
-      font-size: 0.9rem;
-      border-top: 1px dashed #ff0066;
-      padding-top: 1rem;
-    }
-
-    .glitch {
-      font-size: 2rem;
-      animation: glitch 1s infinite;
-    }
-
-    @keyframes glitch {
-      0% { text-shadow: 2px 0 red, -2px 0 cyan; }
-      25% { text-shadow: -3px 0 blue, 3px 0 lime; }
-      50% { text-shadow: 2px -2px magenta, -2px 2px yellow; }
-      75% { text-shadow: -3px -3px cyan, 3px 3px red; }
-      100% { text-shadow: 2px 0 lime, -2px 0 magenta; }
-    }
-
-    .watermark {
-      position: fixed;
-      opacity: 0.08;
-      font-size: 12rem;
-      transform: rotate(-30deg);
-      z-index: -1;
-      user-select: none;
-      color: #ff0066;
-      top: 25%;
-      left: 5%;
-      pointer-events: none;
-    }
-
-    #download-btn {
-      background: linear-gradient(to right, #ff0066, #9900cc);
-      color: white;
-      border: none;
-      padding: 14px 26px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 1.5rem;
-      border-radius: 8px;
-      font-family: 'Courier New', monospace;
-      text-transform: uppercase;
-      font-size: 1.1rem;
-      transition: 0.3s ease;
-    }
-
-    #download-btn:hover {
-      background: linear-gradient(to right, #9900cc, #ff0066);
-      box-shadow: 0 0 10px #ff0066aa;
+    #terminal-text {
+      white-space: pre;
+      margin-left: 20px;
+      line-height: 1.5;
+      color: #ff5555;
     }
 
     .typing-effect {
-      border-right: 2px solid #00ffcc;
+      border-right: 2px solid #ff0000;
       animation: blink 0.5s infinite;
     }
 
@@ -119,139 +111,431 @@
       50% { border-color: transparent; }
     }
 
-    .terminal-panel {
-      background-color: #000000;
-      padding: 1rem;
+    .leak-section {
+      margin-bottom: 2rem;
+      border-bottom: 1px dashed #ff0000;
+      padding-bottom: 1rem;
+    }
+
+    .leak-section h3 {
+      color: #ff0000;
+      margin-top: 0;
+      font-size: 1.5rem;
+    }
+
+    #map {
+      height: 250px;
+      background: #000;
+      border: 1px solid #ff0000;
+      margin-top: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #map::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(90deg, transparent 49%, #ff0000 50%, transparent 51%),
+        linear-gradient(0deg, transparent 49%, #ff0000 50%, transparent 51%);
+      opacity: 0.3;
+    }
+
+    #map::after {
+      content: "📍 UBICACIÓN EXACTA: CASA DE ELTREMENDO";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ff0000;
+      font-size: 1.2rem;
+      text-align: center;
+      text-shadow: 0 0 5px #000;
+    }
+
+    #progress-container {
+      margin-top: 2rem;
+    }
+
+    #progress-text {
+      color: #ff5555;
+      margin-bottom: 0.5rem;
+    }
+
+    #progress-bar {
+      height: 20px;
+      background: #000;
+      border: 1px solid #ff0000;
+      position: relative;
+    }
+
+    #progress-fill {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(to right, #ff0000, #990000);
+    }
+
+    #download-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      margin-top: 2rem;
+      background: linear-gradient(to right, #ff0000, #990000);
+      color: white;
+      border: none;
+      font-family: 'Hacker', monospace;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: 0.3s;
+    }
+
+    #download-btn:hover {
+      background: linear-gradient(to right, #990000, #ff0000);
+      box-shadow: 0 0 20px #ff0000;
+    }
+
+    #counter {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      color: #ff0000;
+      font-size: 1.2rem;
+    }
+
+    #face-cam {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 150px;
+      height: 150px;
+      border: 3px solid #ff0000;
+      box-shadow: 0 0 20px #ff0000;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #ff0000;
+      font-size: 1.5rem;
+      animation: pulse-cam 2s infinite;
+    }
+
+    @keyframes pulse-cam {
+      0% { box-shadow: 0 0 20px #ff0000; }
+      50% { box-shadow: 0 0 30px #ff0000; }
+      100% { box-shadow: 0 0 20px #ff0000; }
+    }
+
+    .blood {
+      position: fixed;
+      color: #ff0000;
+      font-size: 3rem;
+      opacity: 0;
+      animation: blood-drip 5s infinite;
+      z-index: 9999;
+    }
+
+    @keyframes blood-drip {
+      0% { transform: translateY(-100px); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+
+    #face-cam::before {
+      content: "WE ARE WATCHING YOU";
+      position: absolute;
+      bottom: -30px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #ff0000;
+    }
+
+    .blood:nth-child(1) { left: 10%; animation-delay: 1s; }
+    .blood:nth-child(2) { left: 30%; animation-delay: 3s; }
+    .blood:nth-child(3) { left: 50%; animation-delay: 5s; }
+    .blood:nth-child(4) { left: 70%; animation-delay: 2s; }
+    .blood:nth-child(5) { left: 90%; animation-delay: 4s; }
+
+    #ransomware {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      z-index: 99999;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #ff0000;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    #ransomware h2 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    #ransomware p {
       margin-bottom: 1rem;
-      border: 1px solid #00ffcc33;
-      box-shadow: 0 0 10px #00ffcc44;
-      font-size: 1rem;
+    }
+
+    #ransomware-btn {
+      padding: 15px 30px;
+      background: #ff0000;
+      color: white;
+      border: none;
+      font-family: 'Hacker', monospace;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
-  <div class="watermark">CLASSIFIED</div>
-  <div class="container">
-    <h1 class="glitch">🚨 ULTRA-CLASSIFIED LEAK: <span id="target-name">ElTremendo</span></h1>
-    <p style="color: #ff0066;">[!] LEAKED BY: <strong>ANONYMOUS_TROLLS_GROUP</strong> via DARKNET #OPELTREMENDO</p>
+  <div id="screen"></div>
 
-    <div class="terminal-panel">
-      <div id="terminal-text" style="white-space: pre; overflow: hidden; border-left: 3px solid #00ffcc; padding-left: 10px;"></div>
+  <!-- EFECTO DE SANGRE -->
+  <div class="blood">💀</div>
+  <div class="blood">🔪</div>
+  <div class="blood">👁️</div>
+  <div class="blood">🩸</div>
+  <div class="blood">☠️</div>
+
+  <!-- WEBCAM FALSA -->
+  <div id="face-cam">📹 LIVE</div>
+
+  <!-- RANSOMWARE FALSO -->
+  <div id="ransomware">
+    <h2>⚠️ YOUR DEVICE HAS BEEN LOCKED ⚠️</h2>
+    <p>All your data has been encrypted.</p>
+    <p>To unlock your device, you must pay $500 in Bitcoin.</p>
+    <p>Otherwise, all your data will be leaked.</p>
+    <button id="ransomware-btn">PAY NOW</button>
+  </div>
+
+  <div class="container">
+    <h1>⚠️ 𝗖𝗥𝗜𝗧𝗜𝗖𝗔𝗟 𝗛𝗔𝗖𝗞: <span id="target">𝗘𝗹𝗧𝗿𝗲𝗺𝗲𝗻𝗱𝗼</span></h1>
+    <p style="text-align: center; color: #ff5555;">[!] 𝗟𝗘𝗔𝗞𝗘𝗗 𝗕𝗬: <strong>𝗗𝗘𝗔𝗗𝗦𝗘𝗖_𝗖𝗢𝗟𝗟𝗘𝗖𝗧𝗜𝗩𝗘</strong> | 𝗢𝗣𝗘𝗥𝗔𝗧𝗜𝗢𝗡 𝗗𝗔𝗥𝗞𝗡𝗘𝗧 #𝟬𝟬𝟳</p>
+
+    <div class="terminal">
+      <div id="terminal-text"></div>
+    </div>
+
+    <div id="progress-container" style="display: none;">
+      <div id="progress-text">𝗘𝗫𝗙𝗜𝗟𝗧𝗥𝗔𝗧𝗜𝗡𝗚 𝗗𝗔𝗧𝗔: <span id="progress-percent">0%</span></div>
+      <div id="progress-bar">
+        <div id="progress-fill"></div>
+      </div>
     </div>
 
     <div id="leak-content" style="display: none;">
-      <label>Nombre completo</label>
-      <input type="text" value="Juan Tremendo" />
-
-      <label>Ubicación</label>
-      <input type="text" value="Posiblemente en su cuarto (router: 'MegacableOla_5G')" />
-
-      <label>Pareja</label>
-      <input type="text" value="Ferchiz, anteriormente conocida como Queenlois" />
-
-      <label>Biografía</label>
-      <textarea>Streamer carismático de TikTok, conocido por su vibra chill y sus partidas en Roblox...</textarea>
-
-      <label>Nombres de usuario anteriores</label>
-      <textarea>Rymonz, El de la R, ElTremendo, RobloxMaster2023, JuanSoyYo</textarea>
-
-      <label>Usuario de Roblox</label>
-      <input type="text" value="asusjuanyt205" />
-
-      <label>ID de Roblox</label>
-      <input type="text" value="3888484420" />
-
-      <label>Nombre en Steam</label>
-      <input type="text" value="rainycortex25 (último juego: R.E.P.O. - 2 horas)" />
-
-      <label>Usuario de TikTok</label>
-      <input type="text" value="@ElTremendo (5.3k seguidores, 120k likes)" />
-
-      <label>Contraseñas antiguas (hasheadas)</label>
-      <input type="text" value="••••••••123, eltremendo_amigos, freeRobux2025" />
-
-      <label>Historial de búsquedas embarazosas</label>
-      <textarea>"Cómo hacer que me crezca la barba rápido" ...</textarea>
-
-      <label>DMs filtrados (Discord)</label>
-      <textarea>[12/04/2025] ᴇʟ ᴛʀᴇᴍᴇɴᴅᴏあ: "Tremendo" ...</textarea>
-
-      <label>Estadísticas de juego</label>
-      <textarea>Roblox: 2,584h / Fortnite: 3 wins de 200 intentos</textarea>
-
-      <label>Metadatos técnicos</label>
-      <textarea>- IP: 192.168.1.XX / Dispositivo: Android / Hash corrupto...</textarea>
-
-      <button id="download-btn">⬇️ DESCARGAR LEAK COMPLETO (2.4GB)</button>
-
-      <div class="note">
-        ⚠️ Este archivo fue recuperado desde la carpeta secreta <strong>"🗃️ ELT-CLASSIFIED"</strong> en la darknet.
-        Comparte bajo tu propio riesgo. <span style="color: #ff0066;">#ELTREMENDO_ESTAS_ATRAPADO</span>
+      <div class="leak-section">
+        <h3>🔐 𝗣𝗘𝗥𝗦𝗢𝗡𝗔𝗟 𝗗𝗔𝗧𝗔</h3>
+        <p><strong>𝗡𝗔𝗠𝗘:</strong> Juan "ElTremendo" Pérez</p>
+        <p><strong>𝗟𝗢𝗖𝗔𝗧𝗜𝗢𝗡:</strong> Cerca del router "FamiliaPerez_5G"</p>
+        <p><strong>𝗔𝗚𝗘:</strong> 19 (pero dice tener 20)</p>
+        <p><strong>𝗔𝗟𝗜𝗔𝗦 𝗔𝗡𝗧𝗘𝗥𝗜𝗢𝗥𝗘𝗦:</strong> Rymonz, ElDeLaR, RobloxNoob2021</p>
       </div>
+
+      <div class="leak-section">
+        <h3>💀 𝗖𝗢𝗠𝗣𝗥𝗢𝗠𝗜𝗦𝗜𝗡𝗚 𝗗𝗔𝗧𝗔</h3>
+        <p><strong>𝗥𝗢𝗕𝗟𝗢𝗫 𝗔𝗖𝗖:</strong> asusjuanyt205 (ID: 3888484420)</p>
+        <p><strong>𝗦𝗧𝗘𝗔𝗠:</strong> rainycortex25 (Last game: R.E.P.O.)</p>
+        <p><strong>𝗧𝗜𝗞𝗧𝗢𝗞:</strong> @ElTremendo (5.3k followers)</p>
+        <p><strong>𝗠𝗢𝗦𝗧 𝗨𝗦𝗘𝗗 𝗣𝗔𝗦𝗦𝗪𝗢𝗥𝗗:</strong> "••••••••123"</p>
+      </div>
+
+      <div class="leak-section">
+        <h3>🔍 𝗦𝗘𝗔𝗥𝗖𝗛 𝗛𝗜𝗦𝗧𝗢𝗥𝗬</h3>
+        <p>"How to be TikTok famous without talent"</p>
+        <p>"Roblox hacks 2025 no virus (really)"</p>
+        <p>"Why my ex left me for a Free Fire main"</p>
+      </div>
+
+      <div class="leak-section">
+        <h3>📍 𝗟𝗢𝗖𝗔𝗧𝗜𝗢𝗡 𝗠𝗔𝗣</h3>
+        <div id="map"></div>
+        <p style="color: #ff5555; margin-top: 0.5rem;">
+          <strong>𝗟𝗔𝗦𝗧 𝗖𝗢𝗡𝗡𝗘𝗖𝗧𝗜𝗢𝗡:</strong> 192.168.1.XX | Android (Update your system!)
+        </p>
+      </div>
+
+      <button id="download-btn">⬇️ 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗 𝗙𝗨𝗟𝗟 𝗗𝗔𝗧𝗔 (𝟯.𝟳𝗚𝗕 𝗘𝗡𝗖𝗥𝗬𝗣𝗧𝗘𝗗)</button>
     </div>
   </div>
 
-  <audio id="alert-sfx" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-retro-game-over-213.wav"></audio>
+  <div id="counter">[ 𝗗𝗔𝗧𝗔 𝗦𝗧𝗢𝗟𝗘𝗡: <span id="counter-number">0</span> ]</div>
+
+  <!-- SONIDOS -->
+  <audio id="typing-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-software-interface-start-2574.mp3"></audio>
+  <audio id="alert-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-ominous-drone-2277.mp3"></audio>
+  <audio id="complete-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3"></audio>
+  <audio id="error-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-retro-game-over-213.mp3"></audio>
+  <audio id="scream-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-horror-lose-2027.mp3"></audio>
+  <audio id="laugh-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-evil-villain-laugh-2668.mp3"></audio>
 
   <script>
+    // ELEMENTOS
     const terminalText = document.getElementById('terminal-text');
     const leakContent = document.getElementById('leak-content');
-    const targetName = document.getElementById('target-name');
+    const progressContainer = document.getElementById('progress-container');
+    const progressFill = document.getElementById('progress-fill');
+    const progressPercent = document.getElementById('progress-percent');
     const downloadBtn = document.getElementById('download-btn');
-    const alertSfx = document.getElementById('alert-sfx');
+    const counterNumber = document.getElementById('counter-number');
+    const target = document.getElementById('target');
+    const faceCam = document.getElementById('face-cam');
+    const ransomware = document.getElementById('ransomware');
+    const ransomwareBtn = document.getElementById('ransomware-btn');
 
+    // SONIDOS
+    const typingSound = document.getElementById('typing-sound');
+    const alertSound = document.getElementById('alert-sound');
+    const completeSound = document.getElementById('complete-sound');
+    const errorSound = document.getElementById('error-sound');
+    const screamSound = document.getElementById('scream-sound');
+    const laughSound = document.getElementById('laugh-sound');
+
+    // MENSAJES DE TERMINAL
     const messages = [
-      "Iniciando exploit...",
-      "Bypassing firewalls...",
-      "Accediendo a base de datos encriptada...",
-      "Extrayendo información confidencial...",
-      "Filtrando conversaciones privadas...",
-      "Obteniendo ubicaciones GPS...",
-      "¡LEAK COMPLETO OBTENIDO!"
+      "Initializing deep web exploit...",
+      "Bypassing corporate firewalls...",
+      "Accessing Discord servers...",
+      "Stealing authentication tokens...",
+      "Decrypting passwords...",
+      "Extracting search history...",
+      "Geolocating mobile device...",
+      "Filtering private messages...",
+      "CLEAN! Data exfiltration complete."
     ];
 
-    let i = 0;
-    let j = 0;
-    let currentMessage = '';
+    // VARIABLES
+    let currentMessage = 0;
+    let currentChar = 0;
+    let dataStolen = 0;
+    let isTyping = false;
 
+    // EFECTO DE MAQUINA DE ESCRIBIR
     function typeWriter() {
-      if (i < messages.length) {
-        currentMessage = messages[i];
-        if (j < currentMessage.length) {
-          terminalText.innerHTML = currentMessage.substring(0, j + 1) + '<span class="typing-effect"></span>';
-          j++;
-          setTimeout(typeWriter, Math.random() * 80 + 50);
+      if (currentMessage < messages.length) {
+        if (currentChar < messages[currentMessage].length) {
+          terminalText.innerHTML = messages[currentMessage].substring(0, currentChar + 1) + '<span class="typing-effect"></span>';
+          currentChar++;
+          
+          // Sonido de teclado aleatorio
+          if (Math.random() > 0.7) {
+            typingSound.currentTime = 0;
+            typingSound.play();
+          }
+          
+          setTimeout(typeWriter, Math.random() * 50 + 30);
         } else {
-          terminalText.innerHTML = currentMessage;
-          i++;
-          j = 0;
+          currentMessage++;
+          currentChar = 0;
           setTimeout(typeWriter, 1000);
         }
       } else {
-        terminalText.style.display = 'none';
-        leakContent.style.display = 'block';
-        setTimeout(() => {
-          alertSfx.play();
-          alert('[!] ADVERTENCIA: TU IP HA SIDO REGISTRADA. FBI EN CAMINO.');
-        }, 2000);
+        // TERMINAL COMPLETA
+        terminalText.innerHTML = "> Operation complete. Data ready for export.";
+        progressContainer.style.display = "block";
+        simulateProgress();
       }
     }
 
-    setInterval(() => {
-      targetName.textContent = Math.random() > 0.5 ? 'ElTr3m3nd0' : 'ElTremendo';
-    }, 250);
+    // SIMULAR BARRA DE PROGRESO
+    function simulateProgress() {
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += Math.random() * 5;
+        if (progress > 100) progress = 100;
+        progressFill.style.width = progress + "%";
+        progressPercent.textContent = Math.floor(progress) + "%";
+        
+        // Actualizar contador de datos robados
+        dataStolen = Math.floor(progress * 37);
+        counterNumber.textContent = dataStolen;
+        
+        if (progress === 100) {
+          clearInterval(interval);
+          setTimeout(() => {
+            leakContent.style.display = "block";
+            completeSound.play();
+            alertSound.play();
+            
+            // Efecto de título "hackeado"
+            setInterval(() => {
+              target.textContent = Math.random() > 0.5 ? "𝗘𝗹𝗧𝗿𝟯𝗺𝟯𝗻𝗱𝟬" : "𝗘𝗹𝗧𝗿𝗲𝗺𝗲𝗻𝗱𝗼";
+            }, 200);
 
+            // Efecto de webcam
+            faceCam.textContent = "👁️ WATCHING";
+          }, 1000);
+        }
+      }, 100);
+    }
+
+    // BOTÓN DE DESCARGA (SUSTO)
     downloadBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      downloadBtn.textContent = '🚨 CONEXIÓN INTERRUMPIDA (FBI WARNING)';
-      downloadBtn.style.background = 'linear-gradient(to right, #ff0000, #990000)';
-      alertSfx.play();
+      errorSound.play();
+      screamSound.play();
+      
+      // Efecto de error
+      downloadBtn.textContent = "🚨 𝗖𝗢𝗡𝗡𝗘𝗖𝗧𝗜𝗢𝗡 𝗧𝗘𝗥𝗠𝗜𝗡𝗔𝗧𝗘𝗗 (𝗙𝗕𝗜 𝗜𝗦 𝗖𝗢𝗠𝗜𝗡𝗚)";
+      downloadBtn.style.background = "linear-gradient(to right, #000000, #990000)";
+      document.body.style.animation = "none";
+      document.body.style.background = "#000";
+      faceCam.textContent = "⚠️ 𝗧𝗔𝗥𝗚𝗘𝗧 𝗟𝗢𝗖𝗞𝗘𝗗";
+      
+      // Mostrar ransomware falso
       setTimeout(() => {
-        alert('JAJAJA ESBROMA TILÍN 🦇');
-      }, 1000);
+        ransomware.style.display = "flex";
+        laughSound.play();
+      }, 2000);
     });
 
-    setTimeout(typeWriter, 1500);
+    // BOTÓN DE RANSOMWARE (BROMA FINAL)
+    ransomwareBtn.addEventListener('click', () => {
+      ransomware.innerHTML = `
+        <h2>JAJAJJA, bromita tilin</h2>
+        <p>Te saqué un peo?</p>
+      `;
+      ransomware.style.color = "#00ff00";
+      ransomwareBtn.style.display = "none";
+    });
+
+    // INICIAR "HACKEO"
+    setTimeout(() => {
+      typeWriter();
+      typingSound.play();
+    }, 1500);
+
+    // CONTADOR DE DATOS (efecto visual)
+    setInterval(() => {
+      if (dataStolen > 0 && dataStolen < 37) {
+        counterNumber.textContent = dataStolen + Math.floor(Math.random() * 3);
+      }
+    }, 100);
+
+    // EFECTO DE SCROLL HORROR
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500 && !leakContent.style.display) {
+        alertSound.play();
+        faceCam.textContent = "⚠️ DON'T SCROLL";
+      }
+    });
   </script>
 </body>
 </html>
