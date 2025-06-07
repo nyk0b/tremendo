@@ -1,541 +1,734 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>⚠️ 𝗖𝗥𝗜𝗧𝗔𝗟 𝗛𝗔𝗖𝗞: 𝗘𝗹𝗧𝗿𝗲𝗺𝗲𝗻𝗱𝗼 𝗗𝗔𝗧𝗔𝗟𝗘𝗔𝗞</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Un mensaje que espera en la oscuridad">
+  <title>Para Ti</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    /* ESTILOS DEL INFIERNO DIGITAL */
-    @font-face {
-      font-family: 'Hacker';
-      src: url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+    :root {
+      --primary-color: rgba(255, 165, 0, 0.85);
+      --secondary-color: rgba(255, 255, 255, 0.7);
+      --text-color: rgba(255, 255, 255, 0.92);
+      --shadow-color: rgba(255, 69, 0, 0.4);
+      --accent-color: rgba(178, 34, 34, 0.6);
+      --bg-gradient-start: #1a1a2e;
+      --bg-gradient-end: #16213e;
     }
-
+    
+    * {
+      box-sizing: border-box;
+    }
+    
     body {
-      background-color: #000;
       margin: 0;
       padding: 0;
-      font-family: 'Hacker', monospace;
-      color: #ff0000;
-      cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><circle cx='8' cy='8' r='7' fill='red'/><circle cx='8' cy='8' r='3' fill='black'/></svg>"), auto;
-      overflow-y: scroll;
-      height: 500vh; /* Scroll infinito */
+      background: radial-gradient(ellipse at bottom, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+      color: var(--text-color);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      letter-spacing: 0.5px;
+      min-height: 100vh;
+      background-attachment: fixed;
+      overflow: hidden;
     }
 
-    #screen {
+    .fixed-background {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: 100vh;
       z-index: -1;
-      opacity: 0.3;
-      background: 
-        repeating-linear-gradient(0deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.1) 1px, transparent 1px, transparent 2px),
-        repeating-linear-gradient(90deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.1) 1px, transparent 1px, transparent 2px);
-      animation: scanlines 0.5s infinite;
     }
 
-    @keyframes scanlines {
-      from { background-position: 0 0; }
-      to { background-position: 0 10px; }
+    .scrollable-content {
+      height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
 
+    .scrollable-content::-webkit-scrollbar {
+      display: none;
+    }
+    
     .container {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 2rem;
-      border: 3px solid #ff0000;
-      box-shadow: 0 0 30px #ff0000;
+      max-width: 720px;
+      margin: 4rem auto;
+      background: linear-gradient(
+        145deg, 
+        rgba(255, 255, 255, 0.06) 0%, 
+        rgba(255, 255, 255, 0.03) 100%
+      );
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      padding: 3.5rem 4.5rem;
+      border-radius: 1.5rem;
+      box-shadow: 
+        0 20px 50px var(--shadow-color),
+        0 0 0 1px rgba(255, 255, 255, 0.03),
+        0 0 30px rgba(178, 34, 34, 0.1) inset;
+      z-index: 1;
       position: relative;
-      background: rgba(0, 0, 0, 0.8);
-      animation: glitch-border 5s infinite;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transform-style: preserve-3d;
+      transform: translateZ(20px);
+      transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      overflow: hidden;
     }
 
-    @keyframes glitch-border {
-      0% { border-color: #ff0000; }
-      25% { border-color: #00ff00; }
-      50% { border-color: #0000ff; }
-      75% { border-color: #ffff00; }
-      100% { border-color: #ff00ff; }
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--primary-color),
+        transparent
+      );
+      opacity: 0.3;
+    }
+
+    .container:hover {
+      transform: translateZ(30px) rotateY(2deg) rotateX(1deg);
+      box-shadow: 
+        0 30px 70px var(--shadow-color),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        0 0 40px rgba(178, 34, 34, 0.15) inset;
     }
 
     h1 {
-      font-size: 3rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 500;
+      margin-bottom: 2.5rem;
+      color: var(--primary-color);
       text-align: center;
-      color: #ff0000;
-      text-shadow: 0 0 10px #ff0000;
-      margin-bottom: 1rem;
-      animation: text-glitch 2s infinite;
-    }
-
-    @keyframes text-glitch {
-      0% { transform: translate(0); }
-      20% { transform: translate(-5px, 5px); color: #00ff00; }
-      40% { transform: translate(5px, -5px); color: #0000ff; }
-      60% { transform: translate(-5px, -5px); color: #ffff00; }
-      80% { transform: translate(5px, 5px); color: #ff00ff; }
-      100% { transform: translate(0); color: #ff0000; }
-    }
-
-    .terminal {
-      background: #000;
-      border: 1px solid #ff0000;
-      padding: 1rem;
-      margin-bottom: 2rem;
-      min-height: 150px;
-      overflow: hidden;
       position: relative;
+      padding-bottom: 1.5rem;
+      line-height: 1.3;
+      text-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
     }
 
-    .terminal::before {
-      content: ">";
+    h1::after {
+      content: '';
       position: absolute;
-      left: 10px;
-      color: #ff0000;
-      font-weight: bold;
+      bottom: 0;
+      left: 25%;
+      width: 50%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+      opacity: 0.5;
     }
 
-    #terminal-text {
-      white-space: pre;
-      margin-left: 20px;
-      line-height: 1.5;
-      color: #ff5555;
-    }
-
-    .typing-effect {
-      border-right: 2px solid #ff0000;
-      animation: blink 0.5s infinite;
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
-
-    .leak-section {
-      margin-bottom: 2rem;
-      border-bottom: 1px dashed #ff0000;
-      padding-bottom: 1rem;
-    }
-
-    .leak-section h3 {
-      color: #ff0000;
-      margin-top: 0;
-      font-size: 1.5rem;
-    }
-
-    #map {
-      height: 250px;
-      background: #000;
-      border: 1px solid #ff0000;
-      margin-top: 1rem;
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 2.2rem;
+      text-align: justify;
+      hyphens: auto;
       position: relative;
-      overflow: hidden;
+      padding-left: 1.5rem;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     }
 
-    #map::before {
-      content: "";
+    p::before {
+      content: '❝';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        linear-gradient(90deg, transparent 49%, #ff0000 50%, transparent 51%),
-        linear-gradient(0deg, transparent 49%, #ff0000 50%, transparent 51%);
-      opacity: 0.3;
+      left: -0.5rem;
+      top: -0.8rem;
+      color: var(--primary-color);
+      opacity: 0.4;
+      font-size: 2.2rem;
+      line-height: 1;
+      text-shadow: none;
     }
 
-    #map::after {
-      content: "📍 UBICACIÓN EXACTA: CASA DE ELTREMENDO";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #ff0000;
-      font-size: 1.2rem;
-      text-align: center;
-      text-shadow: 0 0 5px #000;
-    }
-
-    #progress-container {
-      margin-top: 2rem;
-    }
-
-    #progress-text {
-      color: #ff5555;
-      margin-bottom: 0.5rem;
-    }
-
-    #progress-bar {
-      height: 20px;
-      background: #000;
-      border: 1px solid #ff0000;
+    .signature {
+      margin-top: 4.5rem;
+      text-align: right;
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--primary-color);
       position: relative;
+      padding-right: 1rem;
+      letter-spacing: 1px;
     }
 
-    #progress-fill {
-      height: 100%;
-      width: 0;
-      background: linear-gradient(to right, #ff0000, #990000);
+    .signature::before {
+      content: '';
+      position: absolute;
+      top: -1.2rem;
+      right: 0;
+      width: 30%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+      opacity: 0.6;
     }
 
-    #download-btn {
-      display: block;
-      width: 100%;
-      padding: 15px;
-      margin-top: 2rem;
-      background: linear-gradient(to right, #ff0000, #990000);
-      color: white;
-      border: none;
-      font-family: 'Hacker', monospace;
-      font-size: 1.2rem;
-      font-weight: bold;
-      cursor: pointer;
-      text-transform: uppercase;
-      transition: 0.3s;
-    }
-
-    #download-btn:hover {
-      background: linear-gradient(to right, #990000, #ff0000);
-      box-shadow: 0 0 20px #ff0000;
-    }
-
-    #counter {
+    .music-player {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      color: #ff0000;
-      font-size: 1.2rem;
-    }
-
-    #face-cam {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 150px;
-      height: 150px;
-      border: 3px solid #ff0000;
-      box-shadow: 0 0 20px #ff0000;
-      background: #000;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.75);
+      padding: 0.8rem 1.5rem;
+      border-radius: 2rem;
       display: flex;
-      justify-content: center;
       align-items: center;
-      color: #ff0000;
+      gap: 1rem;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .music-player:hover {
+      background: rgba(0, 0, 0, 0.85);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .music-player button {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: var(--primary-color);
       font-size: 1.5rem;
-      animation: pulse-cam 2s infinite;
+      cursor: pointer;
+      width: 2.8rem;
+      height: 2.8rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
 
-    @keyframes pulse-cam {
-      0% { box-shadow: 0 0 20px #ff0000; }
-      50% { box-shadow: 0 0 30px #ff0000; }
-      100% { box-shadow: 0 0 20px #ff0000; }
+    .music-player button:hover {
+      background: rgba(255, 165, 0, 0.2);
+      transform: scale(1.05);
     }
 
-    .blood {
-      position: fixed;
-      color: #ff0000;
-      font-size: 3rem;
-      opacity: 0;
-      animation: blood-drip 5s infinite;
-      z-index: 9999;
+    .music-player span {
+      font-size: 0.95rem;
+      color: var(--secondary-color);
+      font-weight: 400;
+      letter-spacing: 0.5px;
     }
 
-    @keyframes blood-drip {
-      0% { transform: translateY(-100px); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(100vh); opacity: 0; }
+    @keyframes fadeIn {
+      from { 
+        opacity: 0; 
+        transform: translateY(30px) rotateX(10deg); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0) rotateX(0); 
+      }
     }
 
-    #face-cam::before {
-      content: "WE ARE WATCHING YOU";
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(-15deg);
+      }
+      50% {
+        transform: translateY(-10px) rotate(-18deg);
+      }
+    }
+
+    @keyframes floatReverse {
+      0%, 100% {
+        transform: translateY(0) rotate(15deg);
+      }
+      50% {
+        transform: translateY(-10px) rotate(18deg);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 2.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+
+    .falling-leaves {
       position: absolute;
-      bottom: -30px;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      font-size: 0.8rem;
-      color: #ff0000;
-    }
-
-    .blood:nth-child(1) { left: 10%; animation-delay: 1s; }
-    .blood:nth-child(2) { left: 30%; animation-delay: 3s; }
-    .blood:nth-child(3) { left: 50%; animation-delay: 5s; }
-    .blood:nth-child(4) { left: 70%; animation-delay: 2s; }
-    .blood:nth-child(5) { left: 90%; animation-delay: 4s; }
-
-    #ransomware {
-      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: #000;
-      z-index: 99999;
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: #ff0000;
-      font-size: 2rem;
-      text-align: center;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
     }
 
-    #ransomware h2 {
-      font-size: 3rem;
-      margin-bottom: 2rem;
+    .leaf {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.7;
+      animation: fall linear infinite;
+      transform-origin: 50% 0;
     }
 
-    #ransomware p {
-      margin-bottom: 1rem;
+    .leaf:nth-child(5n) {
+      animation-delay: 0.5s;
+      animation-duration: 8s;
     }
 
-    #ransomware-btn {
-      padding: 15px 30px;
-      background: #ff0000;
-      color: white;
-      border: none;
-      font-family: 'Hacker', monospace;
-      font-size: 1.5rem;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 2rem;
+    .leaf:nth-child(3n) {
+      animation-duration: 10s;
+    }
+
+    .leaf:nth-child(7n) {
+      animation-duration: 12s;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    .floating-letters {
+      position: fixed;
+      font-family: 'Playfair Display', serif;
+      color: rgba(255, 255, 255, 0.05);
+      font-size: 10rem;
+      z-index: -1;
+      user-select: none;
+      pointer-events: none;
+      text-shadow: 0 0 20px rgba(255, 165, 0, 0.1);
+    }
+
+    .floating-letters.top-left {
+      top: 5%;
+      left: 5%;
+      transform: rotate(-15deg);
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .floating-letters.bottom-right {
+      bottom: 5%;
+      right: 5%;
+      transform: rotate(15deg);
+      animation: floatReverse 9s ease-in-out infinite;
+    }
+
+    .highlight {
+      text-shadow: 0 0 8px var(--primary-color);
+      position: relative;
+      display: inline-block;
+    }
+
+    .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--primary-color);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .container:hover .highlight::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .pumpkin {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="%23FFA500" d="M256 0c-83.6 0-152 68.4-152 152v48c0 83.6 68.4 152 152 152s152-68.4 152-152v-48c0-83.6-68.4-152-152-152zm0 32c66.2 0 120 53.8 120 120v48c0 66.2-53.8 120-120 120s-120-53.8-120-120v-48c0-66.2 53.8-120 120-120zm-64 104c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24zm-64 64c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24z"/></svg>');
+      background-repeat: no-repeat;
+      z-index: -1;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .bat {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="%23FFFFFF" d="M256 0c-70.7 0-128 57.3-128 128s57.3 128 128 128 128-57.3 128-128S326.7 0 256 0zm0 32c53 0 96 43 96 96s-43 96-96 96-96-43-96-96 43-96 96-96zm-80 96c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zm160 0c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32z"/></svg>');
+      background-repeat: no-repeat;
+      z-index: -1;
+      animation: floatReverse 5s ease-in-out infinite;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 2.5rem;
+        margin: 2rem 1.5rem;
+        border-radius: 1.2rem;
+        backdrop-filter: blur(10px);
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+      }
+      
+      p {
+        font-size: 1.05rem;
+        padding-left: 1.2rem;
+        margin-bottom: 1.8rem;
+      }
+      
+      p::before {
+        left: -0.3rem;
+        top: -0.6rem;
+        font-size: 1.8rem;
+      }
+      
+      .music-player {
+        bottom: 1.2rem;
+        right: 1.2rem;
+        padding: 0.7rem 1.2rem;
+      }
+      
+      .floating-letters {
+        font-size: 6rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 2rem 1.5rem;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      p {
+        font-size: 1rem;
+        text-align: left;
+        hyphens: none;
+      }
+      
+      .signature {
+        margin-top: 3.5rem;
+        font-size: 1.1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div id="screen"></div>
 
-  <!-- EFECTO DE SANGRE -->
-  <div class="blood">💀</div>
-  <div class="blood">🔪</div>
-  <div class="blood">👁️</div>
-  <div class="blood">🩸</div>
-  <div class="blood">☠️</div>
+<audio id="background-music" loop>
+    <source src="WFL.mp3" type="audio/mpeg" />
+  </audio>
 
-  <!-- WEBCAM FALSA -->
-  <div id="face-cam">📹 LIVE</div>
-
-  <!-- RANSOMWARE FALSO -->
-  <div id="ransomware">
-    <h2>⚠️ YOUR DEVICE HAS BEEN LOCKED ⚠️</h2>
-    <p>All your data has been encrypted.</p>
-    <p>To unlock your device, you must pay $500 in Bitcoin.</p>
-    <p>Otherwise, all your data will be leaked.</p>
-    <button id="ransomware-btn">PAY NOW</button>
+  <div class="fixed-background">
+    <div class="falling-leaves" id="leaves"></div>
+    <div class="pumpkin" style="top:15%; left:10%;"></div>
+    <div class="bat" style="top:20%; right:15%;"></div>
+    <div class="pumpkin" style="bottom:10%; right:10%;"></div>
+    <div class="bat" style="bottom:15%; left:15%;"></div>
+    <div class="floating-letters top-left">🎃</div>
+    <div class="floating-letters bottom-right">👻</div>
   </div>
+  
+<div class="scrollable-content">
+  <div class="container fade-in">
+    <h1>Por si estás leyendo esto algún día</h1>
 
-  <div class="container">
-    <h1>⚠️ 𝗖𝗥𝗜𝗧𝗜𝗖𝗔𝗟 𝗛𝗔𝗖𝗞: <span id="target">𝗘𝗹𝗧𝗿𝗲𝗺𝗲𝗻𝗱𝗼</span></h1>
-    <p style="text-align: center; color: #ff5555;">[!] 𝗟𝗘𝗔𝗞𝗘𝗗 𝗕𝗬: <strong>𝗗𝗘𝗔𝗗𝗦𝗘𝗖_𝗖𝗢𝗟𝗟𝗘𝗖𝗧𝗜𝗩𝗘</strong> | 𝗢𝗣𝗘𝗥𝗔𝗧𝗜𝗢𝗡 𝗗𝗔𝗥𝗞𝗡𝗘𝗧 #𝟬𝟬𝟳</p>
+    <p>
+      Soff,
+    </p>
 
-    <div class="terminal">
-      <div id="terminal-text"></div>
-    </div>
+    <p>
+      No sé si te diste cuenta, pero hoy volví a fallar. Estoy tomando un Four Loko y no, no estoy bien. No es fiesta, no hay risas, no es una peda chida. Es una noche rara donde todo pesa y lo único que tengo claro es que te extraño.
+    </p>
 
-    <div id="progress-container" style="display: none;">
-      <div id="progress-text">𝗘𝗫𝗙𝗜𝗟𝗧𝗥𝗔𝗧𝗜𝗡𝗚 𝗗𝗔𝗧𝗔: <span id="progress-percent">0%</span></div>
-      <div id="progress-bar">
-        <div id="progress-fill"></div>
-      </div>
-    </div>
+    <p>
+      Sé que no te gusta que tome cuando ando así. Me lo dijiste más de una vez. Y yo, como el güey que quiere quedar bien y no puede ni consigo mismo, te prometí que no lo haría. Pero mírame. Me ganó el bajón. Y sin querer, volví a escribirte con alcohol en la sangre.
+    </p>
 
-    <div id="leak-content" style="display: none;">
-      <div class="leak-section">
-        <h3>🔐 𝗣𝗘𝗥𝗦𝗢𝗡𝗔𝗟 𝗗𝗔𝗧𝗔</h3>
-        <p><strong>𝗡𝗔𝗠𝗘:</strong> Juan "ElTremendo" Pérez</p>
-        <p><strong>𝗟𝗢𝗖𝗔𝗧𝗜𝗢𝗡:</strong> Cerca del router "FamiliaPerez_5G"</p>
-        <p><strong>𝗔𝗚𝗘:</strong> 19 (pero dice tener 20)</p>
-        <p><strong>𝗔𝗟𝗜𝗔𝗦 𝗔𝗡𝗧𝗘𝗥𝗜𝗢𝗥𝗘𝗦:</strong> Rymonz, ElDeLaR, RobloxNoob2021</p>
-      </div>
+    <p>
+      A veces me dan estos arranques donde me aferro a detalles tontos. Como que, según yo, amas Halloween. No estoy seguro al cien, pero algo en ti... no sé. Hay algo de esa fecha que te va. Tal vez porque es medio oscura, medio mágica, como tú. Y aunque falten cinco meses, ya estoy pensando en eso, solo porque me recuerda a ti.
+    </p>
 
-      <div class="leak-section">
-        <h3>💀 𝗖𝗢𝗠𝗣𝗥𝗢𝗠𝗜𝗦𝗜𝗡𝗚 𝗗𝗔𝗧𝗔</h3>
-        <p><strong>𝗥𝗢𝗕𝗟𝗢𝗫 𝗔𝗖𝗖:</strong> asusjuanyt205 (ID: 3888484420)</p>
-        <p><strong>𝗦𝗧𝗘𝗔𝗠:</strong> rainycortex25 (Last game: R.E.P.O.)</p>
-        <p><strong>𝗧𝗜𝗞𝗧𝗢𝗞:</strong> @ElTremendo (5.3k followers)</p>
-        <p><strong>𝗠𝗢𝗦𝗧 𝗨𝗦𝗘𝗗 𝗣𝗔𝗦𝗦𝗪𝗢𝗥𝗗:</strong> "••••••••123"</p>
-      </div>
+    <p>
+      Me acuerdo de todo sin tener nada físico. No hay fotos juntos, ni abrazos pendientes, ni un perfume que te delate. Pero te juro que hay noches donde siento tu energía como si estuvieras a un mensaje de distancia, o a una canción de aparecerte en mi cuarto.
+    </p>
 
-      <div class="leak-section">
-        <h3>🔍 𝗦𝗘𝗔𝗥𝗖𝗛 𝗛𝗜𝗦𝗧𝗢𝗥𝗬</h3>
-        <p>"How to be TikTok famous without talent"</p>
-        <p>"Roblox hacks 2025 no virus (really)"</p>
-        <p>"Why my ex left me for a Free Fire main"</p>
-      </div>
+    <p>
+      Nunca te tuve cerca, pero tampoco te tuve lejos. Y eso confunde más de lo que parece. A veces me pregunto si tú también piensas en mí cuando se te va el sueño. Si recuerdas nuestras charlas que empezaban de risa y acababan con verdades que no decimos en voz alta.
+    </p>
 
-      <div class="leak-section">
-        <h3>📍 𝗟𝗢𝗖𝗔𝗧𝗜𝗢𝗡 𝗠𝗔𝗣</h3>
-        <div id="map"></div>
-        <p style="color: #ff5555; margin-top: 0.5rem;">
-          <strong>𝗟𝗔𝗦𝗧 𝗖𝗢𝗡𝗡𝗘𝗖𝗧𝗜𝗢𝗡:</strong> 192.168.1.XX | Android (Update your system!)
-        </p>
-      </div>
+    <p>
+      No escribo esto para que me contestes. Ni para darte lástima. Solo quería que supieras que aún ando por aquí, que sigo pensando en ti más de lo que digo, que me sigues importando como ese tipo de personas que no se olvidan aunque pase el tiempo.
+    </p>
 
-      <button id="download-btn">⬇️ 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗 𝗙𝗨𝗟𝗟 𝗗𝗔𝗧𝗔 (𝟯.𝟳𝗚𝗕 𝗘𝗡𝗖𝗥𝗬𝗣𝗧𝗘𝗗)</button>
+    <p>
+      A veces imagino que si esto fuera un juego, estaríamos en un servidor solo para los dos. Sin lag. Sin drama. Con música buena y todo fluyendo. Pero pues no es un juego. Y el lag emocional sí pega.
+    </p>
+
+    <p>
+      Ojalá estés bien. Neta. Ojalá sonrías más seguido y que alguien, aunque no sea yo, te haga sentir ligera. Y si algún día necesitas saber que alguien te piensa sin pedir nada a cambio, aquí estoy.
+    </p>
+
+    <p class="highlight">
+      Siempre voy a tener un poco de ti en mi caos. Y eso ya no me molesta.
+    </p>
+
+    <div class="signature">
+      Con cariño raro, de esos que no se explican pero se quedan,<br>
+      <span class="highlight">Nyk0b</span>
     </div>
   </div>
+</div>
 
-  <div id="counter">[ 𝗗𝗔𝗧𝗔 𝗦𝗧𝗢𝗟𝗘𝗡: <span id="counter-number">0</span> ]</div>
 
-  <!-- SONIDOS -->
-  <audio id="typing-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-software-interface-start-2574.mp3"></audio>
-  <audio id="alert-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-ominous-drone-2277.mp3"></audio>
-  <audio id="complete-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3"></audio>
-  <audio id="error-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-retro-game-over-213.mp3"></audio>
-  <audio id="scream-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-horror-lose-2027.mp3"></audio>
-  <audio id="laugh-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-evil-villain-laugh-2668.mp3"></audio>
+
+
+  <div class="music-player">
+    <button id="play-button">▶</button>
+    <span>Waiting For Love - Avicii</span>
+  </div>
 
   <script>
-    // ELEMENTOS
-    const terminalText = document.getElementById('terminal-text');
-    const leakContent = document.getElementById('leak-content');
-    const progressContainer = document.getElementById('progress-container');
-    const progressFill = document.getElementById('progress-fill');
-    const progressPercent = document.getElementById('progress-percent');
-    const downloadBtn = document.getElementById('download-btn');
-    const counterNumber = document.getElementById('counter-number');
-    const target = document.getElementById('target');
-    const faceCam = document.getElementById('face-cam');
-    const ransomware = document.getElementById('ransomware');
-    const ransomwareBtn = document.getElementById('ransomware-btn');
-
-    // SONIDOS
-    const typingSound = document.getElementById('typing-sound');
-    const alertSound = document.getElementById('alert-sound');
-    const completeSound = document.getElementById('complete-sound');
-    const errorSound = document.getElementById('error-sound');
-    const screamSound = document.getElementById('scream-sound');
-    const laughSound = document.getElementById('laugh-sound');
-
-    // MENSAJES DE TERMINAL
-    const messages = [
-      "Initializing deep web exploit...",
-      "Bypassing corporate firewalls...",
-      "Accessing Discord servers...",
-      "Stealing authentication tokens...",
-      "Decrypting passwords...",
-      "Extracting search history...",
-      "Geolocating mobile device...",
-      "Filtering private messages...",
-      "CLEAN! Data exfiltration complete."
-    ];
-
-    // VARIABLES
-    let currentMessage = 0;
-    let currentChar = 0;
-    let dataStolen = 0;
-    let isTyping = false;
-
-    // EFECTO DE MAQUINA DE ESCRIBIR
-    function typeWriter() {
-      if (currentMessage < messages.length) {
-        if (currentChar < messages[currentMessage].length) {
-          terminalText.innerHTML = messages[currentMessage].substring(0, currentChar + 1) + '<span class="typing-effect"></span>';
-          currentChar++;
-          
-          // Sonido de teclado aleatorio
-          if (Math.random() > 0.7) {
-            typingSound.currentTime = 0;
-            typingSound.play();
-          }
-          
-          setTimeout(typeWriter, Math.random() * 50 + 30);
+    const leavesContainer = document.getElementById('leaves');
+    const numLeaves = 30;
+    
+    function createLeaves() {
+      leavesContainer.innerHTML = '';
+      
+      const scrollableContent = document.querySelector('.scrollable-content');
+      const scrollHeight = scrollableContent.scrollHeight;
+      
+      leavesContainer.style.height = `${scrollHeight}px`;
+      
+      const fragment = document.createDocumentFragment();
+      
+      for (let i = 0; i < numLeaves; i++) {
+        const leaf = document.createElement('div');
+        leaf.classList.add('leaf');
+        
+        // Aleatorizar entre hojas naranjas (calabazas) y negras (murciélagos)
+        const leafType = Math.random() > 0.5 ? 'pumpkin' : 'bat';
+        
+        const left = Math.random() * 100;
+        const top = -50 - Math.random() * 100;
+        const duration = 5 + Math.random() * 10;
+        const delay = Math.random() * 15;
+        const size = 15 + Math.random() * 30;
+        const rotation = Math.random() * 360;
+        
+        if (leafType === 'pumpkin') {
+          leaf.style.backgroundImage = 'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="%23FFA500" d="M256 0c-83.6 0-152 68.4-152 152v48c0 83.6 68.4 152 152 152s152-68.4 152-152v-48c0-83.6-68.4-152-152-152zm0 32c66.2 0 120 53.8 120 120v48c0 66.2-53.8 120-120 120s-120-53.8-120-120v-48c0-66.2 53.8-120 120-120zm-64 104c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24zm-64 64c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24z"/></svg>\')';
         } else {
-          currentMessage++;
-          currentChar = 0;
-          setTimeout(typeWriter, 1000);
+          leaf.style.backgroundImage = 'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="%23FFFFFF" d="M256 0c-70.7 0-128 57.3-128 128s57.3 128 128 128 128-57.3 128-128S326.7 0 256 0zm0 32c53 0 96 43 96 96s-43 96-96 96-96-43-96-96 43-96 96-96zm-80 96c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zm160 0c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32z"/></svg>\')';
+        }
+        
+        leaf.style.left = `${left}%`;
+        leaf.style.top = `${top}px`;
+        leaf.style.width = `${size}px`;
+        leaf.style.height = `${size}px`;
+        leaf.style.animationDuration = `${duration}s`;
+        leaf.style.animationDelay = `${delay}s`;
+        leaf.style.transform = `rotate(${rotation}deg)`;
+        
+        fragment.appendChild(leaf);
+      }
+      
+      leavesContainer.appendChild(fragment);
+    }
+    
+    // Crear hojas iniciales y ajustar al cambiar tamaño
+    createLeaves();
+    
+    const resizeObserver = new ResizeObserver(() => {
+      createLeaves();
+    });
+    
+    resizeObserver.observe(document.querySelector('.scrollable-content'));
+    
+    // Control de música mejorado
+    const music = document.getElementById('background-music');
+    const playButton = document.getElementById('play-button');
+    let isPlaying = false;
+    let userInteracted = false;
+    
+    // Función para manejar la interacción del usuario
+    function handleFirstInteraction() {
+      if (!userInteracted) {
+        userInteracted = true;
+        document.removeEventListener('click', handleFirstInteraction);
+        document.removeEventListener('keydown', handleFirstInteraction);
+        document.removeEventListener('touchstart', handleFirstInteraction);
+        
+        // Intentar reproducción después de interacción
+        attemptAutoplay();
+      }
+    }
+    
+    // Escuchar múltiples eventos de interacción
+    document.addEventListener('click', handleFirstInteraction);
+    document.addEventListener('keydown', handleFirstInteraction);
+    document.addEventListener('touchstart', handleFirstInteraction);
+    
+    // Intentar autoplay (puede no funcionar en algunos navegadores)
+    function attemptAutoplay() {
+      if (!userInteracted) return;
+      
+      const promise = music.play();
+      
+      if (promise !== undefined) {
+        promise.catch(error => {
+          console.log('Autoplay no permitido, mostrando controles');
+          playButton.textContent = '▶';
+          isPlaying = false;
+        }).then(() => {
+          isPlaying = true;
+          playButton.textContent = '❚❚';
+        });
+      }
+    }
+    
+    // Control del botón de play/pause
+    playButton.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevenir que active handleFirstInteraction
+      
+      if (!userInteracted) {
+        userInteracted = true;
+      }
+      
+      if (isPlaying) {
+        music.pause();
+        playButton.textContent = '▶';
+      } else {
+        music.play().then(() => {
+          playButton.textContent = '❚❚';
+        }).catch(error => {
+          console.error('Error al reproducir:', error);
+        });
+      }
+      isPlaying = !isPlaying;
+    });
+    
+    // Actualizar estado del reproductor
+    music.addEventListener('play', () => {
+      isPlaying = true;
+      playButton.textContent = '❚❚';
+    });
+    
+    music.addEventListener('pause', () => {
+      isPlaying = false;
+      playButton.textContent = '▶';
+    });
+    
+    // Efecto de movimiento 3D al mover el ratón (optimizado)
+    const container = document.querySelector('.container');
+    let lastX = 0;
+    let lastY = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let rafId = null;
+    
+    function lerp(start, end, t) {
+      return start * (1 - t) + end * t;
+    }
+    
+    function updateContainerTransform() {
+      const xAxis = lerp(lastX, targetX, 0.1);
+      const yAxis = lerp(lastY, targetY, 0.1);
+      
+      if (Math.abs(xAxis - lastX) < 0.01 && Math.abs(yAxis - lastY) < 0.01) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+        return;
+      }
+      
+      lastX = xAxis;
+      lastY = yAxis;
+      
+      container.style.transform = `
+        translateZ(30px) 
+        rotateY(${xAxis}deg) 
+        rotateX(${yAxis}deg)
+      `;
+      
+      rafId = requestAnimationFrame(updateContainerTransform);
+    }
+    
+    document.addEventListener('mousemove', (e) => {
+      targetX = (window.innerWidth / 2 - e.pageX) / 25;
+      targetY = (window.innerHeight / 2 - e.pageY) / 25;
+      
+      if (!rafId) {
+        rafId = requestAnimationFrame(updateContainerTransform);
+      }
+    });
+    
+    // Resetear posición cuando el ratón sale
+    document.addEventListener('mouseleave', () => {
+      targetX = 0;
+      targetY = 0;
+      
+      if (!rafId) {
+        rafId = requestAnimationFrame(updateContainerTransform);
+      }
+    });
+    
+    // Efecto de máquina de escribir para el título
+    const title = document.querySelector('h1');
+    const originalText = title.textContent;
+    title.textContent = '';
+    
+    let i = 0;
+    const typeWriter = setInterval(() => {
+      if (i < originalText.length) {
+        title.textContent += originalText.charAt(i);
+        i++;
+        
+        // Añadir efecto de cursor durante la escritura
+        if (i < originalText.length) {
+          title.setAttribute('data-cursor', '|');
+        } else {
+          title.removeAttribute('data-cursor');
         }
       } else {
-        // TERMINAL COMPLETA
-        terminalText.innerHTML = "> Operation complete. Data ready for export.";
-        progressContainer.style.display = "block";
-        simulateProgress();
-      }
-    }
-
-    // SIMULAR BARRA DE PROGRESO
-    function simulateProgress() {
-      let progress = 0;
-      const interval = setInterval(() => {
-        progress += Math.random() * 5;
-        if (progress > 100) progress = 100;
-        progressFill.style.width = progress + "%";
-        progressPercent.textContent = Math.floor(progress) + "%";
-        
-        // Actualizar contador de datos robados
-        dataStolen = Math.floor(progress * 37);
-        counterNumber.textContent = dataStolen;
-        
-        if (progress === 100) {
-          clearInterval(interval);
-          setTimeout(() => {
-            leakContent.style.display = "block";
-            completeSound.play();
-            alertSound.play();
-            
-            // Efecto de título "hackeado"
-            setInterval(() => {
-              target.textContent = Math.random() > 0.5 ? "𝗘𝗹𝗧𝗿𝟯𝗺𝟯𝗻𝗱𝟬" : "𝗘𝗹𝗧𝗿𝗲𝗺𝗲𝗻𝗱𝗼";
-            }, 200);
-
-            // Efecto de webcam
-            faceCam.textContent = "👁️ WATCHING";
-          }, 1000);
-        }
-      }, 100);
-    }
-
-    // BOTÓN DE DESCARGA (SUSTO)
-    downloadBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      errorSound.play();
-      screamSound.play();
-      
-      // Efecto de error
-      downloadBtn.textContent = "🚨 𝗖𝗢𝗡𝗡𝗘𝗖𝗧𝗜𝗢𝗡 𝗧𝗘𝗥𝗠𝗜𝗡𝗔𝗧𝗘𝗗 (𝗙𝗕𝗜 𝗜𝗦 𝗖𝗢𝗠𝗜𝗡𝗚)";
-      downloadBtn.style.background = "linear-gradient(to right, #000000, #990000)";
-      document.body.style.animation = "none";
-      document.body.style.background = "#000";
-      faceCam.textContent = "⚠️ 𝗧𝗔𝗥𝗚𝗘𝗧 𝗟𝗢𝗖𝗞𝗘𝗗";
-      
-      // Mostrar ransomware falso
-      setTimeout(() => {
-        ransomware.style.display = "flex";
-        laughSound.play();
-      }, 2000);
-    });
-
-    // BOTÓN DE RANSOMWARE (BROMA FINAL)
-    ransomwareBtn.addEventListener('click', () => {
-      ransomware.innerHTML = `
-        <h2>JAJAJJA, bromita tilin</h2>
-        <p>Te saqué un peo?</p>
-      `;
-      ransomware.style.color = "#00ff00";
-      ransomwareBtn.style.display = "none";
-    });
-
-    // INICIAR "HACKEO"
-    setTimeout(() => {
-      typeWriter();
-      typingSound.play();
-    }, 1500);
-
-    // CONTADOR DE DATOS (efecto visual)
-    setInterval(() => {
-      if (dataStolen > 0 && dataStolen < 37) {
-        counterNumber.textContent = dataStolen + Math.floor(Math.random() * 3);
+        clearInterval(typeWriter);
       }
     }, 100);
-
-    // EFECTO DE SCROLL HORROR
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 500 && !leakContent.style.display) {
-        alertSound.play();
-        faceCam.textContent = "⚠️ DON'T SCROLL";
+    
+    // Cambiar el color de fondo según la hora del día
+    function updateBackgroundGradient() {
+      const hour = new Date().getHours();
+      let startColor, endColor;
+      
+      if (hour >= 6 && hour < 18) {
+        startColor = '#2a1a4a';
+        endColor = '#1a1a2e';
+      } else {
+        startColor = '#1a1a2e';
+        endColor = '#0f0f1a';
       }
-    });
+      
+      document.body.style.background = `
+        radial-gradient(ellipse at bottom, ${startColor} 0%, ${endColor} 100%)
+      `;
+    }
+    
+    updateBackgroundGradient();
+    setInterval(updateBackgroundGradient, 3600000);
   </script>
 </body>
 </html>
